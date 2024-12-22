@@ -1,101 +1,126 @@
 import Image from "next/image";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const mainPagecard = [
+    {
+      Image: "/SpeakingClubs.png",
+      Heading: "Speaking clubs",
+      discription:
+        "In our school you will practice your speaking skills and just get a lot of positive emotions!",
+    },
+    {
+      Image: "/QualityControl.png",
+      Heading: "Quality control",
+      discription:
+        "A huge work has been done with the teachers and their work has been monitored thoroughly. ",
+    },
+    {
+      Image: "/Progress.png",
+      Heading: "Progress analysis",
+      discription:
+        "The CEF of Reference has been used at our school. It allows to control our students’ success in studying.",
+    },
+  ];
+  const Teachers = [
+    {
+      Image: "/Haward.png",
+      name: "Christian Howard",
+      language: "Italian teacher",
+    },
+    {
+      Image: "/wilson.png",
+      name: "Sandra Wilson",
+      language: "Spanish teacher",
+    },
+    {
+      Image: "/Cooper.png",
+      name: "Jimmy Cooper",
+      language: "English teacher",
+    },
+  ];
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+  return (
+    <>
+      <main className="p-3">
+        {/*    Hero and Navigation Section  */}
+        <section className="p-3 bg-[#FFF5F1]  min-h-[700px] flex flex-col   ">
+          <nav className=" flex justify-between">
+            <Image src={"/Icon.png"} width={110} height={50} />
+            <ul className="flex items-center gap-3">
+              <li>Courses</li>
+              <li>Aboutv Us</li>
+              <li>Teachers</li>
+              <li>Pricing</li>
+              <li>Careers</li>
+              <li>Blog</li>
+            </ul>
+            <button className=" border text-blue-700 bg-white rounded-3xl p-3  ">
+              Get Started
+            </button>
+          </nav>
+          <div className=" md:flex  justify-end items-center p-3  mt-[10vh] md:mt-0 ">
+            <div className=" md:w-[50%]">
+              <h2 className=" sm:text-[50px] text-[40px] font-light leading-[52px] ">
+                A unique approach to learning foreign languages online
+              </h2>
+              <p className=" text-[18px] w-[60%] font-light">
+                Learn at your own pace, with lifetime access on mobile and
+                desktop
+              </p>
+              <button className=" border text-white  bg-[#524FD5] rounded-3xl py-3  px-7 mt-7  ">
+                Get Started
+              </button>
+            </div>
+            <div className=" md:w-[50%] p-10 h-full flex  items-center relative    ">
+              <div
+                className="bg-[#FFD6B0] 
+              md:h-[500px] md:w-[500px] w-[400px] h-[400px]  -rotate-[10deg] 
+              rounded-[40px] m-4 z-0  opacity-30  "
+              ></div>
+              <div
+                className="bg-[#FFD6B0] w-[400px] h-[400px] md:w-[500px] md:h-[500px] 
+               opacity-80 z-50 absolute rounded-[60px] rotate-[5deg]"
+              >
+                <Image src={"/Image.png"} width={500} height={500} />
+              </div>
+            </div>
+          </div>
+        </section>
+        {/*   Middle */}
+        <section className=" mt-[10vh]   ">
+          <div className="text-center ">
+            <p className="text-[18px] text-[#B0B0C0] ">Why choose us </p>
+            <h2 className="font-normal text-[48px]">Our values</h2>
+          </div>
+          <div className=" flex flex-wrap justify-evenly mt-4 ">
+            {mainPagecard.map((data, i) => (
+              <div
+                key={i}
+                className="w-[289px] h-[280px] flex justify-center flex-col items-center rounded-2xl gap-5  text-center shadow-2xl p-2"
+              >
+                <Image src={data.Image} width={80} height={80} />
+                <h2 className="text-[24px] font-medium">{data.Heading}</h2>
+                <p>{data.discription}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+        <section className="mt-[10vh]">
+          <div className="p-4">
+            <p className="text-[#B0B0C0] text-[18px] font-bold">key persons</p>
+            <h2 className="text-[48px] font-light">Meet our teachers</h2>
+          </div>
+          <div className="flex  flex-wrap justify-evenly">
+            {Teachers.map((data, i) => (
+              <div key={i} className=" gap-5 flex-col  justify-between  ">
+                <Image src={data.Image} height={350} width={300} />
+                <h2 className="text-[24px] font-medium">{data.name}</h2>
+                <p>{data.language}</p>
+              </div>
+            ))}
+          </div>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+    </>
   );
 }
